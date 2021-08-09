@@ -20,7 +20,7 @@ def random_comic(first_year, first_month, first_day, sunday_flag=False):
         if int(year) < int(first_year):
             if int(year) == int(first_year) and int(month) < int(first_month) and int(day) < int(first_day):
                 continue
-        if sunday_flag = True:
+        if sunday_flag == True:
             if day_object.weekday() != 6:
                 continue
         else:
