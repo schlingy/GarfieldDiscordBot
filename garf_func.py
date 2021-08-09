@@ -15,7 +15,7 @@ def random_comic(first_year, first_month, first_day, sunday_only=False):
             month = month[1]
         if int(day[0]) == 0:
             day = day[1]
-        if int(year) < first_year:
+        if int(year) < int(first_year):
             if int(year) == int(first_year) and int(month) < int(first_month) and int(day) < int(first_day):
                 continue
         else:
