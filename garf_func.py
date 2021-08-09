@@ -3,7 +3,7 @@ from faker import Faker
 from random import randrange
 from datetime import datetime 
 
-def random_comic(first_year, first_month, first_day, sunday_only=False):
+def random_comic(sunday_only=False):
     fakey = Faker()
     seed = randrange(100000000)
     Faker.seed(seed)
@@ -15,8 +15,8 @@ def random_comic(first_year, first_month, first_day, sunday_only=False):
             month = month[1]
         if int(day[0]) == 0:
             day = day[1]
-        if int(year) < int(first_year):
-            if int(year) == int(first_year) and int(month) < int(first_month) and int(day) < int(first_day):
+        if int(year) < int(1978):
+            if int(year) == 1978 and int(month) < 6 and int(day) < 19:
                 continue
         else:
             break
