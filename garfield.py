@@ -21,7 +21,7 @@ async def randomgarf(ctx):
 
 @bot.command()
 async def randomgarfsunday(ctx):
-    url, year, month, day = random_sunday_comic()
+    url, year, month, day = random_comic(1978, 6, 19, sunday_flag=True)
     await ctx.send(year + "-" + month + "-" + day)
     await ctx.send(url)
 
