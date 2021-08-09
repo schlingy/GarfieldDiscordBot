@@ -3,7 +3,7 @@ from faker import Faker
 from random import randrange
 from datetime import datetime 
 
-def random_comic(first_year, first_month, first_day, sunday_flag):
+def random_comic(first_year, first_month, first_day):
     fakey = Faker()
     seed = randrange(100000000)
     Faker.seed(seed)
@@ -20,9 +20,9 @@ def random_comic(first_year, first_month, first_day, sunday_flag):
         if int(year) < int(first_year):
             if int(year) == int(first_year) and int(month) < int(first_month) and int(day) < int(first_day):
                 continue
-        if sunday_flag == True:
-            if day_object.weekday() != 6:
-                continue
+        # if sunday_flag == True:
+        #     if day_object.weekday() != 6:
+        #         continue
         else:
             break
     
