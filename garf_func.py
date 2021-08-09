@@ -64,7 +64,7 @@ def random_sunday_comic():
     print("month: " + month)
     print("day: " + day)
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
-    return url
+    return url, year, month, day
 
 def comic_by_date(date):
     split_date = date.split("-")

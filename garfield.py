@@ -1,7 +1,7 @@
 import discord
 import os 
 from dotenv import load_dotenv
-from garf_func import random_comic, comic_by_date, random_sunday_comic
+from garf_func import *
 
 from discord.ext import commands 
 load_dotenv()
@@ -21,8 +21,9 @@ async def randomgarf(ctx):
 
 @bot.command()
 async def randomgarfsunday(ctx):
-    response = random_sunday_comic()
-    await ctx.send(response)
+    url, year, month, day = random_sunday_comic()
+    await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(url)
 
 @bot.command()
 async def garfondate(ctx, arg):
