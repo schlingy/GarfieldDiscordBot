@@ -3,7 +3,7 @@ from faker import Faker
 from random import randrange
 from datetime import datetime 
 
-def random_comic(sunday_only=False):
+def random_comic():
     fakey = Faker()
     seed = randrange(100000000)
     Faker.seed(seed)
