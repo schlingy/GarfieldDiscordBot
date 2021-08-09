@@ -71,7 +71,7 @@ def random_sunday_comic():
     print("month: " + month)
     print("day: " + day)
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
-    return url, year, month, day
+    return url
 
 
 def comic_by_date(date):
