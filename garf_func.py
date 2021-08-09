@@ -3,19 +3,19 @@ from faker import Faker
 from random import randrange
 from datetime import datetime 
 
-def random_comic():
+def random_comic(first_year, first_month, first_day):
     fakey = Faker()
     seed = randrange(100000000)
     Faker.seed(seed)
 
     while(True):
         chosen_date = fakey.date()
-        year, month, day = chosen_date.split()
+        year, month, day = chosen_date.split("-")
         if int(month[0]) == 0:
             month = month[1]
         if int(day[0]) == 0:
             day = day[1]
-        if int(year) < int(1978):
+        if int(year) < int(first_year):
             if int(year) == 1978 and int(month) < 6 and int(day) < 19:
                 continue
         else:
@@ -43,10 +43,8 @@ def random_sunday_comic():
         day_object = datetime.strptime(chosen_date, "%Y-%m-%d")
         if int(month[0]) == 0:
             month = month[1]
-            print(month)
         if int(day[0]) == 0:
             day = day[1]
-            print(day)
         if int(year) < 1978:
             if int(year) == 1978 and int(month) < 6 and int(day) < 19:
                 continue
@@ -60,9 +58,6 @@ def random_sunday_comic():
     if len(day) == 1:
         day = "0" + day
 
-    print("year: " + year)
-    print("month: " + month)
-    print("day: " + day)
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
     return url, year, month, day
 
