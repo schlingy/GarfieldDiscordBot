@@ -1,7 +1,7 @@
 
 from faker import Faker
 from random import randrange
-import datetime from datetime 
+from datetime import datetime 
 
 def random_comic():
     # do the import fake from faker thing
