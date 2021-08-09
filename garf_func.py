@@ -11,12 +11,17 @@ def random_comic(first_year, first_month, first_day, sunday_flag=False):
     while(True):
         chosen_date = fakey.date()
         year, month, day = chosen_date.split("-")
+        # turn the day into a datetime object 
+        day_object = datetime.strptime(chosen_date, "%Y-%m-%d")
         if int(month[0]) == 0:
             month = month[1]
         if int(day[0]) == 0:
             day = day[1]
         if int(year) < int(first_year):
             if int(year) == int(first_year) and int(month) < int(first_month) and int(day) < int(first_day):
+                continue
+        if sunday_flag = True:
+            if day_object.weekday() != 6:
                 continue
         else:
             break
