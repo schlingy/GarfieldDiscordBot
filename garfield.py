@@ -26,6 +26,13 @@ async def randomgarfsunday(ctx):
     await ctx.send(url)
 
 @bot.command()
+async def randomgarfbyyear(ctx, year):
+    url, year, month, day = random_comic_by_year(year, 1978)
+    await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(url)
+
+
+@bot.command()
 async def garfondate(ctx, arg):
     comic = comic_by_date(arg)
     await ctx.send(comic)

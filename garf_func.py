@@ -35,6 +35,34 @@ def random_comic(first_year, first_month, first_day):
     return url, year, month, day
 
 
+def random_comic_by_year(chosen_year, first_year):
+    fakey = Faker()
+    seed = randrange(100000000)
+    Faker.seed(seed)
+
+    while(True):
+        chosen_date = fakey.date()
+        year, month, day = chosen_date.split('-')
+        if int(month[0]) == 0:
+            month = month[1]
+        if int(day[0]) == 0:
+            day = day[1]
+        if int(year) == int(chosen_year):
+            if int(chosen_year) > int(first_year):
+                if int(chosen_year) == int(first_year) and int(month) < 6 and int(day) < 19:
+                    continue
+                else:
+                    break
+    
+    if len(month) == 1:
+        month = "0" + month
+    if len(day) == 1:
+        day = "0" + day
+
+    url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
+    return url, year, month, day
+
+        
 def random_sunday_comic():
     # do the import fake from faker thing
     fakey = Faker()
