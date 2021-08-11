@@ -7,33 +7,38 @@ from discord.ext import commands
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='$')
 
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has joined the chat!')
 
 @bot.command()
-async def randomgarf(ctx):
+async def random(ctx):
     url, year, month, day = random_comic(1978, 6, 19)
     await ctx.send(year + "-" + month + "-" + day)
     await ctx.send(url)
 
 @bot.command()
-async def randomgarfsunday(ctx):
+async def randomsunday(ctx):
     url, year, month, day = random_sunday_comic()
     await ctx.send(year + "-" + month + "-" + day)
     await ctx.send(url)
 
 @bot.command()
-async def randomgarfbyyear(ctx, year):
+async def randombyyear(ctx, year):
     url, year, month, day = random_comic_by_year(year, 1978)
     await ctx.send(year + "-" + month + "-" + day)
     await ctx.send(url)
 
+@bot.command()
+async def number(ctx, number):
+    url, year, month, day = comic_by_number(number)
+    await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(url)
 
 @bot.command()
-async def garfondate(ctx, arg):
+async def date(ctx, arg):
     comic = comic_by_date(arg)
     await ctx.send(comic)
 
