@@ -15,14 +15,16 @@ async def on_ready():
 
 @bot.command()
 async def random(ctx):
-    url, year, month, day = random_comic(1978, 6, 19)
+    url, year, month, day, number, total = random_comic(1978, 6, 19)
     await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(str(number) + " out of " + str(total))
     await ctx.send(url)
 
 @bot.command()
 async def randomsunday(ctx):
-    url, year, month, day = random_sunday_comic()
+    url, year, month, day, number, total = random_sunday_comic()
     await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(str(number) + " out of " + str(total))
     await ctx.send(url)
 
 @bot.command()
@@ -33,14 +35,16 @@ async def randombyyear(ctx, year):
 
 @bot.command()
 async def number(ctx, number):
-    url, year, month, day = comic_by_number(number)
+    url, year, month, day, number, total = comic_by_number(number)
     await ctx.send(year + "-" + month + "-" + day)
     await ctx.send(url)
 
 @bot.command()
 async def date(ctx, arg):
-    comic = comic_by_date(arg)
-    await ctx.send(comic)
+    url, year, month, day, number, total = comic_by_date(arg)
+    await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(str(number) + " out of " + str(total))
+    await ctx.send(url)
 
 @client.event 
 async def on_error(event, *args, **kwargs):
