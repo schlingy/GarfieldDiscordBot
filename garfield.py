@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from garf_func import *
 
+
 from discord.ext import commands 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -29,8 +30,9 @@ async def randomsunday(ctx):
 
 @bot.command()
 async def randombyyear(ctx, year):
-    url, year, month, day = random_comic_by_year(year, 1978)
+    url, year, month, day, number, total = random_comic_by_year(year, 1978)
     await ctx.send(year + "-" + month + "-" + day)
+    await ctx.send(str(number) + " out of " + str(total))
     await ctx.send(url)
 
 @bot.command()
@@ -46,6 +48,11 @@ async def date(ctx, arg):
     await ctx.send(str(number) + " out of " + str(total))
     await ctx.send(url)
 
+# @bot.command()
+# async def find(ctx, arg):
+#     response = find_word_in_comic(arg)
+#     print(response)
+    
 @client.event 
 async def on_error(event, *args, **kwargs):
     with open('err.log', 'a') as f:

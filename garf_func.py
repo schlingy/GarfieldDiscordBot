@@ -72,6 +72,8 @@ def random_comic_by_year(chosen_year, first_year):
     while(True):
         chosen_date = fakey.date()
         year, month, day = chosen_date.split('-')
+        day_object = datetime.strptime(chosen_date, "%Y-%m-%d")
+
         if int(month[0]) == 0:
             month = month[1]
         if int(day[0]) == 0:
@@ -83,10 +85,13 @@ def random_comic_by_year(chosen_year, first_year):
                 else:
                     break
     
+    number = all_dates.index(day_object) + 1
+    total = len(all_dates)
+    
     month, day = format_date(month, day)
 
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
-    return url, year, month, day
+    return url, year, month, day, number, total
 
 def random_sunday_comic():
     while(True):
@@ -119,3 +124,18 @@ def comic_by_date(date):
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
     return url, year, month, day, number, total
     
+
+# def find_word_in_comic(word):
+    # f = open("garf_transcripts.txt", "r")
+    # comic_file = f.read()
+    # individual_comics = comic_file.split("+++++START OF ENTRY+++++")
+
+    # matches = []
+    # for comic in individual_comics:
+    #     comic_lines = comic.split("\n")
+    #     for line in comic_lines:
+    #         if line.startswith("DATE"): 
+    #             date = line
+    #         if word in line:
+    #             matches.append({"match": line, "date": date})
+    # return matches
