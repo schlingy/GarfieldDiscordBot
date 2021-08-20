@@ -52,6 +52,13 @@ async def date(ctx, arg):
 # async def find(ctx, arg):
 #     response = find_word_in_comic(arg)
 #     print(response)
+
+@bot.command()
+async def randombydecade(ctx, arg):
+    url, year, month, day, total = random_comic_by_decade(arg)
+    await ctx.send(year + "-" + month + "-" + day)
+
+    await ctx.send(url)
     
 @client.event 
 async def on_error(event, *args, **kwargs):

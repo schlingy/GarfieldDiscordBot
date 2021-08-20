@@ -1,6 +1,6 @@
 
 from faker import Faker
-from random import randrange
+from random import randrange, choice
 from datetime import datetime, timedelta
 
 # GET ALL DAYS IN A RANGE FROM START TO END
@@ -93,6 +93,56 @@ def random_comic_by_year(chosen_year, first_year):
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
     return url, year, month, day, number, total
 
+
+def random_comic_by_decade(decade):
+    if decade == "70s":
+        seventies = []
+        for i in range(0, 561):
+            seventies.append(i)
+        comic_index = choice(seventies)
+
+    if decade == "80s":
+        eighties = []
+        for i in range(561, 4214):
+            eighties.append(i)
+        comic_index = choice(eighties)
+    
+    if decade == "90s":
+        nineties = []
+        for i in range(4214, 7866):
+            nineties.append(i)
+        comic_index = choice(nineties)
+    
+    if decade == "00s":
+        zeros = []
+        for i in range(7866, 11519):
+            zeros.append(i)
+        comic_index = choice(zeros)
+    
+    if decade == "10s":
+        tens = []
+        for i in range(11519, 15171):
+            tens.append(i)
+        comic_index = choice(tens)
+    
+    if decade == "20s":
+        twenties = []
+        total = len(all_dates)
+        for i in range(15171, total):
+            twenties.append(i)
+        comic_index = choice(twenties)
+
+    comic_date = all_dates[comic_index]
+    year = comic_date.strftime("%Y")
+    month =  comic_date.strftime("%m")
+    day = comic_date.strftime("%d")
+    month, day = format_date(month, day)
+    total = len(all_dates)
+
+    url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
+    return url, year, month, day, total
+
+
 def random_sunday_comic():
     while(True):
 
@@ -124,7 +174,6 @@ def comic_by_date(date):
     url = "http://images.ucomics.com/comics/ga/" + year + "/ga" + year[2:] + month + day + ".gif"
     return url, year, month, day, number, total
     
-
 # def find_word_in_comic(word):
     # f = open("garf_transcripts.txt", "r")
     # comic_file = f.read()
